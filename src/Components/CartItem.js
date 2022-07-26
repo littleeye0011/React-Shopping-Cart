@@ -12,6 +12,10 @@ const CartItem = (props) => {
     setShowPayment(<Payment itemsPrice={itemsPrice} />);
   };
 
+  const formatNumber = (num) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  };
+
   return (
     <div className="cartItem">
       <h2>Cart Items</h2>
@@ -35,7 +39,7 @@ const CartItem = (props) => {
             </div>
 
             <div className="text-right">
-              {item.qty} x ฿{item.price.toFixed(2)}
+              {item.qty} x ฿{formatNumber(item.price.toFixed(2))}
             </div>
           </div>
         ))}
@@ -49,7 +53,7 @@ const CartItem = (props) => {
                 <strong>Total Price</strong>
               </div>
               <div className="text-right">
-                <strong>฿{itemsPrice.toFixed(2)}</strong>
+                <strong>฿{formatNumber(itemsPrice.toFixed(2))}</strong>
               </div>
             </div>
             <hr />

@@ -1,5 +1,9 @@
 import "./Payment.css";
 
+const formatNumber = (num) => {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+};
+
 const Payment = ({ itemsPrice }) => {
   return (
     <div className="wrapper">
@@ -59,7 +63,7 @@ const Payment = ({ itemsPrice }) => {
           <div
             className="pay_btn"
             onClick={() => {
-              alert(`฿${itemsPrice} Implement Checkout Done!`);
+              alert(`฿${formatNumber(itemsPrice)} Implement Checkout Done!`);
               window.location.reload();
             }}
           >
